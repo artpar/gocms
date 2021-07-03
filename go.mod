@@ -29,6 +29,7 @@ require (
 	github.com/artpar/ydb v0.1.26
 	//github.com/artpar/ydb v0.0.5
 	github.com/aviddiviner/gin-limit v0.0.0-20170918012823-43b5f79762c1
+	github.com/beevik/etree v1.1.0 // indirect
 	github.com/bjarneh/latinx v0.0.0-20120329061922-4dfe9ba2a293
 	github.com/buraksezer/olric v0.3.6
 	github.com/corpix/uarand v0.0.0 // indirect
@@ -86,6 +87,7 @@ require (
 	github.com/kr/text v0.2.0 // indirect
 	github.com/labstack/echo v3.3.10+incompatible // indirect
 	github.com/labstack/gommon v0.2.8 // indirect
+	github.com/laurent22/ical-go v0.1.0 // indirect
 	github.com/lib/pq v1.9.0
 	github.com/looplab/fsm v0.0.0-20180515091235-f980bdb68a89
 	github.com/mattn/go-sqlite3 v1.11.0
@@ -97,6 +99,7 @@ require (
 	github.com/pquerna/otp v1.2.0
 	github.com/robfig/cron/v3 v3.0.0
 	github.com/sadlil/go-trigger v0.0.0-20170328161825-cfc3d83007cd
+	github.com/samedi/caldav-go v3.0.0+incompatible
 	github.com/siebenmann/smtpd v0.0.0-20170816215504-b93303610bbe // indirect
 	github.com/simplereach/timeutils v1.2.0 // indirect
 	github.com/sirupsen/logrus v1.7.0
@@ -116,3 +119,5 @@ require (
 )
 
 replace github.com/Azure/go-autorest => github.com/Azure/go-autorest v13.0.0+incompatible
+
+replace github.com/daptin/daptin v0.9.6 => github.com/Ghvstcode/daptin v0.9.6

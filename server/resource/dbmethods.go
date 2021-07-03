@@ -256,7 +256,8 @@ func (dr *DbResource) GetObjectPermissionByReferenceId(objectType string, refere
 	return perm
 }
 
-// GetObjectPermissionById Get permission of an Object by typeName and string referenceId
+
+// Get permission of an Object by typeName and string referenceId
 // Loads the owner, usergroup and guest permission of the action from the database
 // Return a PermissionInstance
 // Return a NoPermissionToAnyone if no such object exist
@@ -596,6 +597,7 @@ func (d *DbResource) GetUserPassword(email string) (string, error) {
 }
 
 // UserGroupNameToId Converts group name to the internal integer id
+
 // should not be used since group names are not unique
 // deprecated
 func (dr *DbResource) UserGroupNameToId(groupName string) (uint64, error) {
@@ -1012,6 +1014,40 @@ func (dr *DbResource) GetUserEmailIdByUsergroupId(usergroupId int64) string {
 	}
 
 	return email
+
+}
+
+func (dr *DbResource) GetUserById(userId int64) (map[string]interface{}, error) {
+
+	user, _, err := dr.Cruds[USER_ACCOUNT_TABLE_NAME].GetSingleRowById("user_account", userId, nil)
+
+	if len(user) > 0 {
+		return user, err
+	}
+
+	return nil, errors.New("no such user")
+
+	//type myStruct struct {
+	//	UserName string
+	//	EmailAddress string `db:"d"`
+	//}
+	//var email string
+	//ds := statementbuilder.Squirrel.Select("email").From(goqu.T("user_account")).Where(goqu.Ex{"id": userId})
+	//sql, args,err := ds.ToSQL()
+	//
+	//if err != nil {
+	//	log.Errorf("Failed to create sql query 872: %v", err)
+	//	return ""
+	//}
+	//
+	//
+	//rowx := dr.db.QueryRowx(sql, args...)
+	//err = rowx.Scan(&email)
+	//if err != nil {
+	//	log.Errorf("Failed to create sql query 872: %v", err)
+	//	return ""
+	//}
+	//return email
 
 }
 
@@ -1669,7 +1705,10 @@ func (dr *DbResource) GetIdToReferenceId(typeName string, id int64) (string, err
 
 }
 
-// GetReferenceIdToId Lookup an string reference id and return a internal integer id of an object of type `typeName`
+
+
+
+// Lookup an string reference id and return a internal integer id of an object of type `typeName`
 func (dr *DbResource) GetReferenceIdToId(typeName string, referenceId string) (int64, error) {
 
 	var id int64
